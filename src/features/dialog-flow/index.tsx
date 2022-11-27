@@ -6,6 +6,7 @@ import ChatGroup from "./components/ChatGroup";
 import ChatMessage from "./components/ChatMessage";
 import demoFlow from "./demoFlow";
 import {
+  resetDialog,
   sendAnswer,
   sendBotMessage,
   setDialogFlow,
@@ -121,6 +122,7 @@ const DialogFlow = () => {
           display: "flex",
           justifyContent: "flex-start",
           alignItems: "center",
+          alignContent: "center",
           gap: "0.5rem",
           p: "0.5rem",
           height: "3rem",
@@ -131,9 +133,26 @@ const DialogFlow = () => {
             <Chip
               key={index}
               label={answer.answer}
+              sx={{
+                cursor: "pointer",
+                bgcolor: "primary.main",
+                color: "primary.contrastText",
+                ":hover": {
+                  bgcolor: "secondary.main",
+                  color: "secondary.contrastText",
+                },
+              }}
               onClick={() => dispatch(sendAnswer(answer))}
             />
           ))}
+        {!isOver && (
+          <Chip
+            label="Restart"
+            onClick={() => dispatch(resetDialog())}
+            color="warning"
+            sx={{ ml: "auto", cursor: "pointer", mr: "0.5rem" }}
+          />
+        )}
       </Box>
     </Box>
   );

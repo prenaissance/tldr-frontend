@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "../common/layout";
-import Flows from "../pages/flows/Flows";
+import Flows from "../pages/flows";
 
 const routes = [
   {
